@@ -20,11 +20,12 @@ Model trained using YOLOv8s for 50 epochs with an image size of 640×640., achie
 
 | Metric | Value |
 |---------|------:|
-| Precision | 89% |
-| Recall | 87% |
-| mAP@0.5 | 91% |
+| Precision | 87.5% |
+| Recall | 80.2% |
+| mAP@0.50 | 86.0% |
+| mAP@0.50:0.95 | 63.0% |
 | Epochs | 50 |
-| Image Size | 640×640 |
+| Image Size | 640 × 640 |
 | Model | YOLOv8s |
 
 ## Detection Strategy
