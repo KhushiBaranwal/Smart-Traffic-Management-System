@@ -54,16 +54,18 @@ This grouping enables efficient traffic signal decision-making while preserving 
 ```
 YOLO_PROJECT/
 ├── simulation/
-│   └── main.py          # Core detection + signal control logic
+│   └── main.py
 ├── weights/
-│   └── best.pt           # Trained YOLOv8 model weights
-├──screenshots/
-├──requirements.txt
-├──README.md
+│   └── best.pt
+├── screenshots/
+├── requirements.txt
+├── README.md
 └── .gitignore
 ```
 
-> Note: The dataset is not included due to its large size.
+> Note:
+> ## Dataset
+ The dataset is not included due to its large size.
 
 The model was trained on a custom transportation dataset exported from Roboflow consisting of 23 object classes.
 
