@@ -1,6 +1,6 @@
 # Smart Traffic Management System
 
-A real-time, YOLOv8-based traffic monitoring and adaptive signal control system that detects vehicles, pedestrians, emergency vehicles, and mobility-impaired individuals to dynamically manage intersection signal timing — improving both traffic flow and accessibility.
+A real-time, YOLOv8-based intelligent traffic management system that detects transportation objects using a custom-trained object detection model and dynamically controls traffic signals based on traffic density, emergency vehicle priority, and pedestrian accessibility.
 
 ## Overview
 
@@ -16,13 +16,31 @@ Traditional traffic signals run on fixed timers regardless of actual road condit
 
 ## Model Performance
 
-Trained over 50 epochs on a custom dataset, achieving:
+Model trained using YOLOv8s for 50 epochs with an image size of 640×640., achieving:
 
-| Metric | Score |
-|---|---|
+| Metric | Value |
+|---------|------:|
 | Precision | 89% |
 | Recall | 87% |
-| mAP | 91% |
+| mAP@0.5 | 91% |
+| Epochs | 50 |
+| Image Size | 640×640 |
+| Model | YOLOv8s |
+
+## Detection Strategy
+
+The YOLOv8 model was trained on a custom transportation dataset containing 23 object classes.
+
+For traffic signal control, detected objects are grouped into four logical categories.
+
+| YOLO Classes | Traffic Category |
+|--------------|------------------|
+| Car, Bus, Truck, etc. | Vehicle |
+| Ambulance, Fire Truck | Emergency Vehicle |
+| Person | Pedestrian |
+| Wheelchair, Crutches | Disabled Person |
+
+This grouping enables efficient traffic signal decision-making while preserving detailed object detection.
 
 ## Tech Stack
 
@@ -39,12 +57,17 @@ YOLO_PROJECT/
 │   └── main.py          # Core detection + signal control logic
 ├── weights/
 │   └── best.pt           # Trained YOLOv8 model weights
-├── yolo26n.pt             # Base model checkpoint
-├── yolov8n.pt              # Base model checkpoint
+├──screenshots/
+├──requirements.txt
+├──README.md
 └── .gitignore
 ```
 
-> Note: The training dataset is not included in this repository due to size. It was custom-labeled using [Roboflow](https://roboflow.com) and includes annotated classes for vehicles, pedestrians, emergency vehicles, and mobility-aid users.
+> Note: The dataset is not included due to its large size.
+
+The model was trained on a custom transportation dataset exported from Roboflow consisting of 23 object classes.
+
+For traffic signal decision-making, these classes are grouped into four logical categories during inference.
 
 ## How It Works
 
